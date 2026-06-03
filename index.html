@@ -531,6 +531,70 @@ footer {
   .why-grid { grid-template-columns: 1fr; }
   .hero-h1 { font-size: 2.5rem; }
 }
+  
+/* ── FAQ SECTION ── */
+.faq-bg { background: var(--white); border-top: 1px solid var(--rule); }
+
+.faq-grid {
+  display: flex; flex-direction: column; gap: 0;
+  border: 1px solid var(--rule);
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--rule);
+  overflow: hidden;
+}
+
+.faq-item:last-child { border-bottom: none; }
+
+.faq-q {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem; font-weight: 500;
+  color: var(--navy, #0D2B4E);
+  padding: 24px 32px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px;
+  transition: background .2s, color .2s;
+  background: var(--white);
+  position: relative;
+}
+
+.faq-q::after {
+  content: '+';
+  font-family: 'DM Mono', monospace;
+  font-size: 1.2rem; font-weight: 400;
+  color: var(--gold);
+  flex-shrink: 0;
+  transition: transform .3s ease;
+}
+
+.faq-item.open .faq-q::after { transform: rotate(45deg); }
+
+.faq-item.open .faq-q {
+  color: var(--teal);
+  background: var(--surface);
+  border-left: 3px solid var(--gold);
+}
+
+.faq-a {
+  display: none;
+  padding: 0 32px 24px 32px;
+  background: var(--surface);
+  border-left: 3px solid var(--gold);
+}
+
+.faq-item.open .faq-a { display: block; }
+
+.faq-a p {
+  font-size: 0.9rem; font-weight: 300;
+  color: var(--slate); line-height: 1.8;
+}
+
+@media (max-width: 900px) {
+  .faq-q { padding: 20px 20px; font-size: 0.95rem; }
+  .faq-a { padding: 0 20px 20px 20px; }
+}  
 </style>
 </head>
 <body>
@@ -797,6 +861,119 @@ footer {
   </div>
 </div>
 
+  <!-- FAQ SECTION -->
+<div class="faq-bg" id="faq">
+  <div class="wrap pad">
+
+    <div class="reveal">
+      <div class="eyebrow">Common Questions</div>
+      <h2 class="h2">What practice owners<br><em>ask us most often</em></h2>
+      <p class="lead" style="margin-bottom:56px">Whether you have been texting patients for years or just getting started, these are the questions we hear most. Plain answers, no jargon.</p>
+    </div>
+
+    <div class="faq-grid reveal reveal-d1">
+
+      <div class="faq-item">
+        <div class="faq-q">What is A2P 10DLC and why does it affect my practice?</div>
+        <div class="faq-a">
+          <p>A2P stands for Application-to-Person. 10DLC refers to the 10-digit local phone numbers most businesses use to send texts. In 2023 the three major carriers — AT&amp;T, Verizon, and T-Mobile — began requiring every business that sends text messages from a local number to register their brand and the types of messages they send with a federal registry called The Campaign Registry.</p>
+          <p style="margin-top:10px">If your practice sends appointment reminders, promotional offers, or any other texts to clients and you have not completed this registration, your messages are being silently filtered by carriers. No error appears on your end. Clients simply never receive them. Most practice owners have no idea this is happening.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">How do I know if my texts are actually reaching my clients?</div>
+        <div class="faq-a">
+          <p>The most common signs that your messages are being filtered include clients saying they never received your appointment reminder, a noticeable drop in clients responding to your texts, or lower response rates to promotional messages than you used to see.</p>
+          <p style="margin-top:10px">The problem is that carrier filtering happens silently. Your SMS platform will often show the message as sent even when it was blocked before reaching the client. The only reliable way to know your status is to verify your registration directly — which is exactly what our free compliance check does.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">My SMS platform handles everything. Does that mean I am already registered?</div>
+        <div class="faq-a">
+          <p>Not necessarily — and this is one of the most common misconceptions we encounter. Most popular SMS platforms used by medical practices including Podium, Weave, Birdeye, Square, and Vagaro do not automatically complete A2P registration on your behalf. Some offer tools to help you register but the registration itself must be initiated and completed correctly by or for your specific business.</p>
+          <p style="margin-top:10px">Even practices that have attempted registration are often missing campaign-level registration — meaning their brand may be registered but the specific types of messages they send are not. Each use case such as appointment reminders and promotional texts requires its own separate campaign registration. Our compliance check identifies exactly what is in place and what is missing.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What does HIPAA have to do with text messaging?</div>
+        <div class="faq-a">
+          <p>HIPAA — the Health Insurance Portability and Accountability Act — applies to any communication that contains or could imply Protected Health Information. When your practice sends a text that references an appointment type, a treatment, a follow-up for a specific service, or anything that connects a patient's identity to their healthcare, that message may qualify as PHI under federal law.</p>
+          <p style="margin-top:10px">This means your SMS platform is required to have a signed Business Associate Agreement — commonly called a BAA — with your practice before sending or storing those messages. Most SMS platforms do not provide a BAA by default and most practice owners have never been asked to sign one. Operating without a BAA on a platform handling patient communications is a federal compliance gap that creates real liability for your practice.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What is a Business Associate Agreement and do I need one?</div>
+        <div class="faq-a">
+          <p>A Business Associate Agreement is a legally required contract between your practice and any third-party vendor that handles Protected Health Information on your behalf. It documents that the vendor agrees to handle that data in compliance with HIPAA standards.</p>
+          <p style="margin-top:10px">If your SMS platform is being used to send messages that reference patient appointments, treatments, or any health-related details, yes — you need a signed BAA with that platform. If your current platform does not offer a BAA or has not provided one, your practice is operating outside HIPAA requirements for that communication channel. This is one of the three areas we assess during your free compliance check.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What is TCPA and what does it mean for my patient texts?</div>
+        <div class="faq-a">
+          <p>The Telephone Consumer Protection Act is a federal consumer protection law that governs how businesses can contact people by phone and text. Under TCPA your practice must obtain documented written consent from a client before sending them any promotional or marketing text message. Verbal consent is not sufficient. A general consent to treatment does not cover SMS marketing.</p>
+          <p style="margin-top:10px">The financial exposure is significant — TCPA violations carry fines of up to $1,500 per unsolicited message per recipient. For a practice sending a monthly promotional text to hundreds of clients without properly documented consent, that exposure adds up quickly. Most practices have never formally audited whether their consent process meets TCPA requirements.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What exactly happens during the free 15-minute compliance check?</div>
+        <div class="faq-a">
+          <p>Before the call we review what we can about your current SMS setup based on the information you provide when booking. On the call itself we ask a focused set of questions covering your SMS platform, your registration status, how you collect consent from clients, and what types of messages you send.</p>
+          <p style="margin-top:10px">Within 24 hours of the call we deliver a written compliance assessment covering all three areas — A2P 10DLC registration, HIPAA platform safety, and TCPA consent. Each area receives a risk rating and plain-language explanation of what we found. If everything is clean and properly configured we will tell you that. There is no sales pressure and no obligation to engage our services after the check.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">How long does the registration process take?</div>
+        <div class="faq-a">
+          <p>The timeline has two parts. Our intake and submission process — collecting your business information, preparing your brand registration, and submitting your campaigns — typically takes 3 to 5 business days from when we receive your completed intake form.</p>
+          <p style="margin-top:10px">Carrier review and approval is handled by AT&amp;T, Verizon, and T-Mobile independently and typically takes 10 to 14 business days from submission. This timeline is carrier-dependent and outside our direct control — however we monitor your submission throughout and handle any rejection or revision requests as part of every package. We deliver your full compliance documentation within 14 business days of receiving your intake form.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Can you guarantee my registration will be approved?</div>
+        <div class="faq-a">
+          <p>No — and any service that guarantees carrier approval is not being honest with you. Carrier approval decisions rest with AT&amp;T, Verizon, and T-Mobile and are governed by their own internal policies. What we guarantee is expert preparation and submission — meaning your brand registration and campaign submissions will be accurate, complete, and optimized to meet carrier requirements before they are submitted.</p>
+          <p style="margin-top:10px">We also include rejection handling and resubmission in every package. If a carrier requests revisions or rejects a submission for a correctable reason we handle that without additional charge. Our goal is to give your registration the strongest possible foundation going in.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What is Compliance Guard and do I need it after registration?</div>
+        <div class="faq-a">
+          <p>Compliance Guard is our monthly monitoring service. Once your registration is approved and your practice is compliant, Compliance Guard monitors your status every month to make sure nothing changes without your knowledge. Carrier policies evolve, platforms update their systems, and registration statuses can change — Compliance Guard ensures you are alerted immediately if anything requires attention.</p>
+          <p style="margin-top:10px">Think of it the way you think of an annual review for other parts of your business. Registration gets you compliant. Compliance Guard keeps you compliant. It is available in three tiers based on your SMS volume — Essential at $149 per month, Standard at $249 per month, and Premium at $349 per month — and can be cancelled anytime with 30 days notice.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">We only send appointment reminders. Do we still need to register?</div>
+        <div class="faq-a">
+          <p>Yes. A2P 10DLC registration is required for all business SMS traffic regardless of message type. Appointment reminders are classified as transactional messages and require their own campaign registration separate from any promotional or marketing messages you send. The registration requirement applies to the phone number and the business sending the messages — not just to promotional content.</p>
+          <p style="margin-top:10px">The good news is that transactional-only campaigns typically move through carrier review faster than mixed-use campaigns and carry lower carrier pass-through fees. If your practice sends only appointment reminders our Core Compliance package is usually the right fit.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">We are a small practice with only a few hundred clients. Does this still apply to us?</div>
+        <div class="faq-a">
+          <p>Yes — registration requirements apply based on the type of messages being sent and the phone number being used, not the size of your contact list. A single-location practice texting 200 clients has the same carrier registration obligation as a multi-location group texting 20,000.</p>
+          <p style="margin-top:10px">Smaller practices often feel less urgency around compliance because they assume these rules are aimed at large enterprise senders. In reality carriers enforce filtering at the number level — meaning your messages can be blocked regardless of how many clients you are texting. Our Core Compliance package was designed specifically with smaller practices in mind.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+  
 <!-- WHY FIDESTRUST -->
 <div class="why-bg">
   <div class="wrap pad">
@@ -916,6 +1093,19 @@ footer {
     }
   }
 }());
+// ── FAQ Accordion ──
+  var faqItems = document.querySelectorAll('.faq-item');
+  for (var f = 0; f < faqItems.length; f++) {
+    faqItems[f].querySelector('.faq-q').addEventListener('click', (function(item) {
+      return function() {
+        var isOpen = item.classList.contains('open');
+        for (var x = 0; x < faqItems.length; x++) {
+          faqItems[x].classList.remove('open');
+        }
+        if (!isOpen) item.classList.add('open');
+      };
+    })(faqItems[f]));
+  }
 </script>
 </body>
 </html>
